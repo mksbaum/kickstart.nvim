@@ -718,9 +718,17 @@ require('lazy').setup({
               disableOrganizeImports = true,
             },
             python = {
+              -- Ensure Pyright is using the correct interpreters if there is a venv so it searches the correct site-packages
+              pythonPath = '.venv/bin/python',
+              venvPath = '.',
+              venv = '.venv',
               analysis = {
                 -- Ignore all files for analysis to exclusively use Ruff for linting
                 ignore = { '*' },
+                -- for auto completion
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = 'workspace',
               },
             },
           },
